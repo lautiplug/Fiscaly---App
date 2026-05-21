@@ -33,9 +33,9 @@ Fiscaly reduces that to under 2 minutes by:
 |-------------------------|-------------------|
 | ![Add](fiscapp/public/screenshots/Manually-Add-Enterprise.png) | ![Docs](fiscapp/public/screenshots/Download-Files.png) |
 
-| Reminders | Document download |
-|-----------|-------------------|
-| ![Reminders](fiscapp/public/screenshots/Add-Reminder.png) | ![Docs](fiscapp/public/screenshots/Download-Files.png) |
+| Reminders | 
+|-----------|
+| ![Reminders](fiscapp/public/screenshots/Add-Reminder.png)
 
 ### FiscAI workflow
 
