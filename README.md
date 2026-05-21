@@ -236,28 +236,12 @@ fiscapp-backend/             # Express backend
 
 ## Running locally
 
-```bash
-# Start the database
-docker-compose up -d
-
-# Backend
-cd fiscapp-backend
-cp .env.development .env
-npm install
-npm run dev
-
-# Frontend
-cd fiscapp
-npm install
-npm run dev
-```
-
-Requires: `ANTHROPIC_API_KEY`, `GMAIL_USER`, `GMAIL_APP_PASSWORD` in `fiscapp-backend/.env.development`.
+Sadly, this project is private due licenses and confidentiality, you can ask for a very reduced demo if wanted, most of the code is as well private.
 
 ---
 
 ## What I'd do differently
-
+- Add a proper mobile version, this software has been designed to be used on office computers but if it scales up in the future, that should be the priority.
 - The `debt` field as a JSON string was a pragmatic choice to avoid a many-to-many table early on. With more time I'd normalize it into a proper `DebtPeriod` model.
 - The FiscAI system prompt is embedded in the controller. It should be in a versioned config or prompt file to allow iteration without a deploy.
 - No integration tests on the email flow — the nodemailer mock and real Gmail config have diverged before, and that's a real risk.
