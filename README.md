@@ -106,26 +106,48 @@ The DOCX is generated in the background while the dialog opens, so by the time t
 // generated simultaneously when the dialog opens
 useEffect(() => {
   if (!open) return
-  setTo(enterprise.email ?? '')
-  // Generate email body
-  import('../../services/docxService').then(({ generateEmailOnly, generateEmailHtml }) => {
-    setBody(generateEmailOnly(enterprise))
-    setBodyHtml(generateEmailHtml(enterprise, phone))
-  })
-  // Generate DOCX attachment in parallel
-  setIsGeneratingDoc(true)
-  import('../../services/docxService').then(({ generateInspectionNotificationBlob }) => {
-    generateInspectionNotificationBlob({ enterprise }).then((blob) => {
-      // convert to base64 for transport
+
+  let cancelled = false
+
+  const initialize = async () => {
+    try {
+      setTo(enterprise.email ?? '')
+      setIsGeneratingDoc(true)
+
+      const {
+        generateEmailOnly,
+        generateEmailHtml,
+        generateInspectionNotificationBlob,
+      } = await import('../../services/docxService')
+      setBody(generateEmailOnly(enterprise))
+      setBodyHtml(generateEmailHtml(enterprise, phone))
+
+      const blob = await generateInspectionNotificationBlob({ enterprise })
+
       const reader = new FileReader()
+
       reader.onloadend = () => {
+        if (cancelled) return
         const base64 = (reader.result as string).split(',')[1]
-        setAttachment({ filename: `NOTIFICACIÓN INSPECCIÓN - ${enterprise.name}.docx`, content: base64 })
-        setIsGeneratingDoc(false)
+        setAttachment({
+          filename: `NOTIFICACIÓN INSPECCIÓN - ${enterprise.name}.docx`,
+          content: base64,
+        })
       }
       reader.readAsDataURL(blob)
-    })
-  })
+    } catch (error) {
+      console.error(error)
+    } finally {
+      if (!cancelled) {
+        setIsGeneratingDoc(false)
+      }
+    }
+  }
+  initialize()
+
+  return () => {
+    cancelled = true
+  }
 }, [open, enterprise])
 ```
 
