@@ -33,11 +33,21 @@ Fiscaly reduces that to under 2 minutes by:
 |-------------------------|-------------------|
 | ![Add](fiscapp/public/screenshots/Manually-Add-Enterprise.png) | ![Docs](fiscapp/public/screenshots/Download-Files.png) |
 
-| Reminders | Source document (input to FiscAI) |
-|-----------|-----------------------------------|
-| ![Reminders](fiscapp/public/screenshots/Add-Reminder.png) | ![Carátula](fiscapp/public/screenshots/Carátula.png) |
+| Reminders | Document download |
+|-----------|-------------------|
+| ![Reminders](fiscapp/public/screenshots/Add-Reminder.png) | ![Docs](fiscapp/public/screenshots/Download-Files.png) |
 
-**FiscAI demo:** [`Fiscai.mov`](fiscapp/public/screenshots/Fiscai.mov) — full extraction flow from document photo to pre-filled form.
+### FiscAI workflow
+
+The full flow runs from a phone camera to a pre-filled form in under 30 seconds.
+
+| 1. Mobile — take photo | 2. Camera aimed at document | 3. Mobile — form pre-filled |
+|------------------------|-----------------------------|-----------------------------|
+| ![Step 1](fiscapp/public/screenshots/Fiscai1.PNG) | ![Step 2](fiscapp/public/screenshots/Fiscai-phototaker.PNG) | ![Step 3](fiscapp/public/screenshots/Fiscai-result.PNG) |
+
+| 4. Desktop — drag & drop upload | Source document |
+|---------------------------------|-----------------|
+| ![Desktop](fiscapp/public/screenshots/Fiscai-Pc.png) | ![Source](fiscapp/public/screenshots/Carátula.png) |
 
 ---
 
